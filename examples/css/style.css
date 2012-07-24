@@ -1,0 +1,50 @@
+/* The following selectors are the 'TYPE' selectors */
+body, html {
+  margin: 0;
+  padding: 0;
+  font: 1em/1.2em Arial;
+  background: #efefef;
+}
+a {
+  color: black;
+  display: inline-block;
+}
+h1 {
+  color: green;
+}
+h2 {
+ color: #86cc00; 
+}
+
+p {
+  color: red;
+}
+
+/* This is an example for the 'CLASS' selector */
+.container {
+  margin: 2em;
+  padding: 1em;
+  background: #ffffff;
+  border: 1px solid #efefef;
+
+  /* Defining border radius using vendor prefixes for different browsers */
+  -webkit-border-radius:  1em;
+  -moz-border-radius:     1em;
+  border-radius:         1em;
+  /* Defining box shadow using vendor prefixes for different browsers */
+  -webkit-box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.4);
+  -moz-box-shadow:    0.3em 0.3em 1em rgba(0, 0, 0, 0.4);
+  box-shadow:         0.3em 0.3em 1em rgba(0, 0, 0, 0.4);
+}
+
+/* This is an example for an 'ID' selector */
+#nav_ul {
+  list-style: none;
+  padding: 0;
+  color: red;
+}
+
+/* This is an example for the 'pseudo' selector */
+a:hover {
+  color: blue;
+}
