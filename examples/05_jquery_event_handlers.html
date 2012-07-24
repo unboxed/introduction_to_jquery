@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery - Event handler</title>
+  <style type="text/css">
+    .container_box {
+      padding: 10px;
+      border:1px solid red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container_box" id="container_1">Hello</div>
+<div class="container_box" id="container_2">World</div>
+<div class="container_box" id="container_3"></div>
+<button id="my_button">Click me!</button>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // Adds an event handler to the #my_button element
+    $("#my_button").live('click', function(){
+      // Combines the contents of #container_1 and #container_2 and adds it to #container_3
+      $('#container_3').text($('#container_1').text() + " " + $('#container_2').text());
+    });
+  });
+</script>
+</body>
+</html>

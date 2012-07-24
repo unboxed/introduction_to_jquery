@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final jQuery practical</title>
+  <link href="../../css/style.css" rel="stylesheet" />
+  <style type="text/css">
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    ul.form_wrapper {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul.form_wrapper li {
+      margin-bottom: 1em;
+    }
+    button.add,
+    button.remove {
+      position: relative;
+      top: -3px;
+      margin-left: 0.5em;
+      border: 0;
+      cursor: pointer;
+      width: 21px;
+      height: 23px;
+      background: url(../../img/add_remove_icons.png) 0 0 no-repeat;
+    }
+    button.remove {
+     background-position: 0 -25px; 
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>A basic jQuery example</h1>
+  <hr/>
+  <form>
+    <h2>Email</h2>
+    <ul id="email_wrapper" class="form_wrapper">
+      <li><input type="email" name="email_1"/><button class="add"></button></li>
+    </ul>
+    <h2>Phone</h2>
+    <ul id="tel_wrapper" class="form_wrapper">
+      <li><input type="tel" name="phone_1"/><button class="add"></button></li>
+    </ul>
+    <input type="submit" value="DONE" />
+  </form>
+</div>
+<script type="text/javascript" src="../../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // An object (used as a namespace) for storing all variables
+    //  we will need to manipulate the DOM
+    var form_settings = {
+      max_fields: 5,
+      input_opts: {
+        type: ["email", "tel"]
+      },
+      parent_ul: {},
+      parent_li: {},
+      prefix_id: 0
+    };
+
+    // We add event handlers to the all the ".add" elements and all the ".remove" elements using the class selectors
+    $('.add').live('click', on_add_button_click);
+    $('.remove').live('click', on_remove_button_click);
+
+    // Handles the click event of every single element using the ".add" class selector
+    //  We call the the 'preventDefault()' method on the event - passed as a parameter. We do this to prevent the default 'submit' behaviour of the button
+    function on_add_button_click(e) {
+      e.preventDefault();
+      console.log("add");
+    };
+
+    // Handles the click event of every single element using the ".remove" class selector
+    function on_remove_button_click(e) {
+      e.preventDefault();
+      console.log("remove");
+    };
+  });
+  </script>
+</body>
+</html>

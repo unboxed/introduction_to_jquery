@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final jQuery practical</title>
+  <link href="../../css/style.css" rel="stylesheet" />
+  <style type="text/css">
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    ul.form_wrapper {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul.form_wrapper li {
+      margin-bottom: 1em;
+    }
+    button.add,
+    button.remove {
+      position: relative;
+      top: -3px;
+      margin-left: 0.5em;
+      border: 0;
+      cursor: pointer;
+      width: 21px;
+      height: 23px;
+      background: url(../../img/add_remove_icons.png) 0 0 no-repeat;
+    }
+    button.remove {
+     background-position: 0 -25px; 
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>A basic jQuery example</h1>
+  <hr/>
+  <form>
+    <h2>Email</h2>
+    <ul id="email_wrapper" class="form_wrapper">
+      <li><input type="email" name="email_1"/><button class="add"></button></li>
+    </ul>
+    <h2>Phone</h2>
+    <ul id="tel_wrapper" class="form_wrapper">
+      <li><input type="tel" name="phone_1"/><button class="add"></button></li>
+    </ul>
+    <input type="submit" value="DONE" />
+  </form>
+</div>
+<script type="text/javascript" src="../../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // An object (used as a namespace) for storing all variables
+    //  we will need to manipulate the DOM
+    var form_settings = {
+      max_fields: 5,
+      input_opts: {
+        type: ["email", "tel"]
+      },
+      parent_ul: {},
+      parent_li: {},
+      prefix_id: 0
+    };
+
+    // We add event handlers to the all the ".add" elements and all the ".remove" elements using the class selectors
+    $('.add').live('click', on_add_button_click);
+    $('.remove').live('click', on_remove_button_click);
+
+    // Handles the click event of every single element using the ".add" class selector
+    //  We call the the 'preventDefault()' method on the event - passed as a parameter. We do this to prevent the default 'submit' behaviour of the button
+    function on_add_button_click(e) {
+      e.preventDefault();
+      set_parents($(this));
+      add_input_field();
+    };
+
+    // Handles the click event of every single element using the ".remove" class selector
+    function on_remove_button_click(e) {
+      e.preventDefault();
+      set_parents($(this));
+    };
+
+    // We store the parent 'li' element and the parent 'ul' of that element,
+    //  which we will reuse later quite a few times :)
+    function set_parents(ref) {
+      form_settings.parent_li = ref.parent();
+      form_settings.parent_ul = form_settings.parent_li.parent();
+      
+      // We also store the 'prefix_id' on our namespace object. This will let us save typing and writing more code than we should by using the
+      //  'input_opts' type accordingly to this value
+      for(var i = 0; i < form_settings.input_opts.type.length; i ++) {
+        if (form_settings.parent_ul.attr("id").indexOf(form_settings.input_opts.type[i]) >= 0) {
+          form_settings.prefix_id = i;
+          break;
+        }
+      }
+    };
+
+    // Adds a new list item with input field to the active list
+    //  with the appropriate type and name (email or tel, depending on which list's buttons the user clicked on)
+    function add_input_field() {
+      var input_type = form_settings.input_opts.type[form_settings.prefix_id],
+      el_index = $('li', form_settings.parent_ul).length + 1,
+      el = '<li><input type="' + input_type + '" name="' + input_type + "_" + el_index + '"/><button></button></li>';
+      $(form_settings.parent_ul).append(el);
+    };
+  });
+  </script>
+</body>
+</html>

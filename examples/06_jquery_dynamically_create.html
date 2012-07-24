@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery - Create</title>
+  <style type="text/css">
+    .container_box {
+      padding: 10px;
+      border:1px solid red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Let's create HTML elements dynamically!</h1>
+<button id="my_button">Add a dynamically created element!</button>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // Adds an event handler to the #my_button element
+    $("#my_button").click(function(){
+      // Combines the contents of #container_1 and #container_2 and adds it to #container_3
+      var el_h = '<h2>Why not...</h2>'
+      var el_p = '<p>Here is a paragraph</p>';
+      var el_hr = '<hr/>';
+      var el_p2 = '<p>Here is another paragraph</p>';
+      var el_p3 = '<p style="color: red; font-weight: bold;">jQuery simply iterated through our elements array using the each method, how cool is that?</p>'
+      var elements = [el_h, el_p, el_hr, el_p2, el_p3];
+      
+      $(elements).each(function(index){
+        $('body').append(elements[index]);
+      });
+    });
+  });
+</script>
+</body>
+</html>

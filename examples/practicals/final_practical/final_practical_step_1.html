@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final jQuery practical</title>
+  <link href="../../css/style.css" rel="stylesheet" />
+  <style type="text/css">
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    ul.form_wrapper {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul.form_wrapper li {
+      margin-bottom: 1em;
+    }
+    button.add,
+    button.remove {
+      position: relative;
+      top: -3px;
+      margin-left: 0.5em;
+      border: 0;
+      cursor: pointer;
+      width: 21px;
+      height: 23px;
+      background: url(../../img/add_remove_icons.png) 0 0 no-repeat;
+    }
+    button.remove {
+     background-position: 0 -25px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>A basic jQuery example</h1>
+  <hr/>
+  <form>
+    <h2>Email</h2>
+    <ul id="email_wrapper" class="form_wrapper">
+      <li><input type="email" name="email_1"/><button class="add"></button></li>
+    </ul>
+    <h2>Phone</h2>
+    <ul id="tel_wrapper" class="form_wrapper">
+      <li><input type="tel" name="phone_1"/><button class="add"></button></li>
+    </ul>
+    <input type="submit" value="DONE" />
+  </form>
+</div>
+</body>
+</html>

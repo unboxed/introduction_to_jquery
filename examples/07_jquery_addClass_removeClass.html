@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery - addClass, removeClass</title>
+  <style type="text/css">
+    ul {
+      list-style: none;
+      display: inline-block;
+      margin: 100px;
+      padding: 0;
+    }
+    ul li {
+      display: inline-block;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background: black;
+    }
+    .blue_box {
+      background: blue;
+    }
+    .red_box {
+      background: red;
+    }
+    .bordered_box {
+      border: 2px solid #0099ff;
+    }
+  </style>
+</head>
+<body>
+
+<ul>
+  <li class="box bordered_box"></li>
+  <li class="box blue_box"></li>
+  <li class="box"></li>
+</ul>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.bordered_box').removeClass('bordered_box');
+    $('.blue_box').removeClass('blue_box').addClass('red_box');
+    $('.box').last().addClass('blue_box');
+  });
+</script>
+</body>
+</html>
